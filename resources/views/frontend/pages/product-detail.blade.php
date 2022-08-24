@@ -15,7 +15,7 @@
                 <h2>{{$product->name}}</h2>
                 <p>Web ID: {{$product->id}}</p>
                 <p>Số lượng còn: {{$product->qty}}</p>
-                <span>Bạn chọn size nào thì thêm size chọn vào ghi chú đơn hàng. Xin cảm ơn!</span>
+                <span>Mọi thắc mắc mời các bạn liên hệ qua số điện thoại hoặc chat của shop</span>
                 @if($product->qty < 1)
                     <h4 class="text-danger">Hết hàng</h4>
                 @else

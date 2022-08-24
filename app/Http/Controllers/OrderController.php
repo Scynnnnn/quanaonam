@@ -83,8 +83,9 @@ class OrderController extends Controller
 
     public function donHangChuaThanhToan()
     {
+        
+        $orders = Order::orderBy("id", "DESC")->where("status", 0)->paginate(10);
         $count = Order::where('status','=','0')->count();
-        $orders = Order::orderBy("id", "DESC")->where("status", 0);
         
         return view("backend.orders.chua-thanh-toan", compact('orders','count'));
     }

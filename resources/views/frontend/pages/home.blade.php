@@ -16,10 +16,10 @@
                             </a>
                             @if($item->promotion > 0)
                             <h4 class="pro-price-del" style="color: #939393">
-                                <del class="compare-price">{{number_format($item->price)}}VND</del>
+                                <del class="compare-price">{{number_format($item->price)}}đ</del>
                             </h4>
                             @endif
-                            <h2>{{ number_format($item->price*(100 - $item->promotion)/100, 0, ',','.') }}</h2>
+                            <h2>{{ number_format($item->price*(100 - $item->promotion)/100, 0, ',','.') }}đ</h2>
 
                             <p><a style="color: #696763"
                                   href="{{ route('products.get_detail', $item->id) }}">{{$item->name}}</a></p>
