@@ -3,7 +3,7 @@
 
 
     <div class="features_items"><!--features_items-->
-        <h2 class="title text-center">SẢN PHẨM MỚI</h2>
+        <h2 class="title text-center">SẢN PHẨM MỚI NHẤT</h2>
         <?php $product_news = DB::table('products')->orderBy('id', 'DESC')->limit('9')->get() ?>
         @foreach($product_news as $item)
             <div class="col-sm-4">
@@ -16,7 +16,7 @@
                             </a>
                             @if($item->promotion > 0)
                             <h4 class="pro-price-del" style="color: #939393">
-                                <del class="compare-price">{{number_format($item->price)}}₫</del>
+                                <del class="compare-price">{{number_format($item->price)}}VND</del>
                             </h4>
                             @endif
                             <h2>{{ number_format($item->price*(100 - $item->promotion)/100, 0, ',','.') }}</h2>
