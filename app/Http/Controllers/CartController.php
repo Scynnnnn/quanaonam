@@ -24,6 +24,9 @@ class CartController extends Controller
 
 
         $cartCollection = Cart::getContent();
+        return response()->json([
+            'status' => 200
+        ]);
     }
 
 

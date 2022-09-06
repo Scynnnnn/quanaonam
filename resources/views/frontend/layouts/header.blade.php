@@ -35,7 +35,11 @@
                                 <li class=""><a href='{{ route('login') }}'>Đăng nhập</a></li>
 {{--                                <li class=""><a href='{{ route('register') }}'>Đăng kí</a></li>--}}
                             @else
-                                <li class=""><a href='{{ route('logout') }}'>Đăng xuất</a></li>
+                                <li class="">
+                                    <span>Xin chào, {{ auth()->guard('web')->user()->name }}</span>
+                                    <a href='{{ route('my.order') }}'>Đơn hàng của tôi</a>
+                                    <a href='{{ route('logout') }}'>Đăng xuất</a>
+                                </li>
                             @endif
 
                         </ul>
@@ -62,7 +66,7 @@
 
                     <div class="mainmenu pull-left">
                         <ul class="nav navbar-nav collapse navbar-collapse">
-                            <li><a href="/" class="active">Home</a></li>
+                            <li><a href="/" class="{{ Route::is('pages.home') ? 'active' : '' }}">Home</a></li>
 {{--                            <li class="dropdown"><a href="#">Danh mục sản phẩm<i class="fa fa-angle-down"></i></a>--}}
 {{--                                <ul role="menu" class="sub-menu">--}}
 {{--                                    @foreach($cates as $item)--}}
@@ -70,9 +74,9 @@
 {{--                                    @endforeach--}}
 {{--                                </ul>--}}
                             </li>
-                            <li><a href="{{ route('get.list_post') }}">Tin tức</a></li>
+                            <li><a href="{{ route('get.list_post') }}" class="{{ Route::is('get.list_post') ? 'active' : '' }}">Tin tức</a></li>
 
-                            <li><a href="{{ route('get_contact') }}">Liên hệ</a></li>
+                            <li><a href="{{ route('get_contact') }}" class="{{ Route::is('get_contact') ? 'active' : '' }}">Liên hệ</a></li>
                         </ul>
                     </div>
                 </div>

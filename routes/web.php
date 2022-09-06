@@ -38,14 +38,13 @@ Route::get('dang-ki', 'Auth\RegisterController@showRegistrationForm')->name('get
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::post('order','OrderController@postOrder')->name('order.post_order');
+Route::post('order-online','OrderController@postOrderOnline')->name('order.post_order.online');
 Route::get('lien-he', 'ContactsController@getContact')->name('get_contact');
 Route::post('lien-he', 'ContactsController@postContact')->name('post_contact');
 Route::post('lien-he', 'ContactsController@postContact')->name('post_contact');
-Route::get('thanh-toan-online', 'OnlinePaymentController@index')->name('get-payment-online');
 
-Route::post('vnpay_create_payment', 'OnlinePaymentController@createPayment')->name('vnpay_create_payment');
-Route::get('vnpay_return', 'OnlinePaymentController@vnpayReturn')->name('vnpay_return');
-
+Route::get('don-hang-cua-toi', 'PagesController@showMyOrder')->name('my.order');
+Route::get('don-hang-cua-toi/id/{id}', 'PagesController@showDetailMyOrder')->name('my.order.get_detail');
 
 Route::group(['prefix' => 'admins', 'middleware' => ['admin']], function () {
     Route::get('/', 'DashboardController@index')->name('admin.dashboard');
@@ -129,7 +128,7 @@ Route::group(['prefix' => 'admins', 'middleware' => ['admin']], function () {
         route::get("/edit/{id}", "ReportController@getEdit")->name("report.get_edit");
         route::post("/edit/{id}", "ReportController@postEdit")->name("report.post_edit");
         route::get("/del/{id}", "ReportController@getdel")->name("report.get_delete");
-
+        Route::get('/report-day', 'ReportController@reportDay');
     });
 
     Route::prefix('warehouse')->group(function () {

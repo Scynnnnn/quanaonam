@@ -50,9 +50,49 @@ class OrderController extends Controller
 
     }
 
+    public function postOrderOnline(Request $request)
+    {
+        $order = new Order();
+
+        $cartContent = Cart::getContent()->sort();
+//        dd($cartContent);
+        $order->qty = $cartContent->count();
+        $order->total = Cart::getSubTotal();
+        $order->type = 'online';
+        $order->status = 0;
+
+        $order->note = $request->note;
+
+        $order->name = $request->name;
+        $order->phone = $request->phone;
+        $order->address = $request->address;
+        $order->save();
+        $id_order = $order->id;
+
+
+        foreach ($cartContent as $row) {
+            $detail = new OrderDetail();
+            $id_pro = $row->id;
+            $product = Product::find($id_pro);
+            $pro_qty = $product->qty;
+            $product->qty = $pro_qty-$row->quantity;
+            $product->save();
+            $detail->pro_id = $row->id;
+            $detail->qty = $row->quantity;
+            $detail->order_id = $id_order;
+            $detail->save();
+        }
+        Cart::clear();
+        echo "<script>alert('Lưu thông tin đơn hàng thành công');location.href='/'</script>";
+
+//        return redirect()->route('pages.home');
+
+    }
+
     public function index()
     {
         $orders = Order::orderBy("id", "DESC")->paginate(10);
+
 
         return view("backend.orders.list", compact('orders'));
     }
@@ -92,7 +132,8 @@ class OrderController extends Controller
 
     public function getDetail($id)
     {
-        $orders = Order::where("id", $id)->first();
-        return view("backend.orders.detail", compact('orders'));
+        $order_details = OrderDetail::where("order_id", $id)->get();
+        $order = Order::find($id);
+        return view("backend.orders.detail", compact('order', 'order_details'));
     }
 }

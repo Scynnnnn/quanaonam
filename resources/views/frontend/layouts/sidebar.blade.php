@@ -30,7 +30,7 @@
 
 
     <div class="shipping text-center"><!--shipping-->
-        <img src="{{ asset('images/home/shipping.jpg') }}" alt=""/>
+        <img src="{{ asset('images/home/giam_gia.jpeg') }}" alt=""/>
     </div><!--/shipping-->
 
 </div>

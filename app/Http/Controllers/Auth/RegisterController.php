@@ -81,7 +81,7 @@ class RegisterController extends Controller
         $user->email = $request->email;
         $user->password = Hash::make($request['password']);
         $user->save();
-        return redirect()->route('login');
+        return redirect()->route('login')->with('message', 'Đăng kí thành công!');;
     }
 
     public function showRegistrationForm ()

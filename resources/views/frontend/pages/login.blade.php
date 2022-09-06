@@ -26,6 +26,8 @@
                 </div>
                 <div class="col-sm-4">
                     <div class="signup-form"><!--sign up form-->
+                    <ul>
+
                         <h2>Đăng ký người dùng mới !
                         </h2>
                         <form  method="post" action="{{ route('register') }}">

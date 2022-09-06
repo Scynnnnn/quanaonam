@@ -36,4 +36,14 @@ class ReportController extends Controller
     {
         return view('backend.report.thong-ke-thang');
     }
+
+    public function reportDay(Request $request)
+    {
+        $month = $request->month;
+        $data = \DB::select('SELECT DATE_FORMAT(o.created_at,"%d/%m/%Y") order_day, SUM(o.total) total_price FROM orders o WHERE o.status = 1 AND MONTH(o.created_at) = ? GROUP BY order_day', [$month]);
+        return response()->json([
+            'status' => 200,
+            'data'    => $data
+        ]);
+    }
 }

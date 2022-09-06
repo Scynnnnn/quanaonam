@@ -7,6 +7,8 @@ use App\Product;
 use Illuminate\Http\Request;
 use DB;
 use Cart;
+use App\Order;
+use App\OrderDetail;
 
 class PagesController extends Controller
 {
@@ -60,5 +62,16 @@ class PagesController extends Controller
         return redirect()->route('login');
     }
 
+    public function showMyOrder()
+    {
+        $orders = Order::where('name', auth()->guard('web')->user()->name)->orderBy("id", "DESC")->get();
+        return view('frontend.pages.my-order', compact('orders'));
+    }
 
+    public function showDetailMyOrder($id)
+    {
+        $order_details = OrderDetail::where("order_id", $id)->get();
+        $order = Order::find($id);
+        return view("frontend.pages.my-order-detail", compact('order', 'order_details'));
+    }
 }

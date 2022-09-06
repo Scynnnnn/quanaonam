@@ -95,17 +95,28 @@
                                 <button class="btn btn-primary" type="submit">Thanh toán khi nhận hàng</button>
 
                             </form>
-                            <a href="{{route('get-payment-online')}}" class="btn btn-primary" type="submit">Thanh toán online</a>
-
-                           <!--  <form method="get" action="{{route('get-payment-online')}}">
+                        </div>
+                    </div>
+                    <div class="col-sm-8" style="margin-top: 1rem;">
+                        <div class="shopper-info">
+                            <p>Thông tin khách hàng</p>
+                            <form method="post" action="{{ route('order.post_order.online') }}">
+                                @csrf
                                 <input name="name" required="" type="text" placeholder="Họ tên"
                                        value="@if(auth()->guard('web')->user()){{ auth()->guard('web')->user()->name }} @endif">
                                 <input name="phone" required="" type="text" placeholder="Số điện thoại">
                                 <input name="address" required="" type="text" placeholder="Địa chỉ nhận hàng">
-                            </form> -->
+
+                                <textarea name="note" type="text" placeholder="Ghi chú" rows="3"></textarea>
+
+                                <button class="btn btn-primary" type="submit">Thanh toán online</button>
+
+                            </form>
                         </div>
                     </div>
-
+                    <div class="col-sm-4">
+                        <img src="{{ asset('images/qr-online.jpg') }}" width="100%"/>
+                    </div>
                 </div>
             </div>
         </div>

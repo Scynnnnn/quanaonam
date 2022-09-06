@@ -44,7 +44,11 @@
                 <input type="text" name="price" id="name" class="form-control" placeholder="Gía sản phẩm..."
                        value="{{old('price')}}">
             </div>
-
+            <div class="form-group">
+                <label for="">Gía nhập </label>
+                <input type="text" name="imp_price" id="name" class="form-control" placeholder="Gía nhập..."
+                       value="{{old('price')}}">
+            </div>
             <div class="form-group">
                 <label for="">Khuyến mãi % </label>
                 <input type="text" name="discount" id="price" class="form-control" placeholder="Khuyến mãi %"
