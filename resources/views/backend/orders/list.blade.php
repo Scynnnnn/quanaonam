@@ -8,6 +8,12 @@
         <input class="form-control" id="myInput" type="text" placeholder="Search..">
 
     </div>
+    <input type="hidden" id="data" value="{{ json_encode($data) }}" />
+    <div class="row">
+        <div class="col-lg-12">
+            <div id="piechart" style="height: 200px;"></div>
+        </div>
+    </div>
     <div class="table table-responsive">
         @include("messages")
         <table class="table table-striped" id="myTable">
@@ -74,5 +80,29 @@
                 });
             });
         });
+    </script>
+    {{-- Orders --}}
+    <script>
+        var arr = [['Trạng thái', 'Số lượng']];
+        var orders = JSON.parse(document.getElementById("data").value);
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        for(x of orders){
+            arr.push([x.status,parseInt(x.order_count)])
+        }  
+        function drawChart() {
+
+            var data = google.visualization.arrayToDataTable(
+                arr
+            );
+
+            var options = {
+            title: 'Thống kê đơn hàng'
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+            chart.draw(data, options);
+        }
     </script>
 @endsection
