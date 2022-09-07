@@ -138,12 +138,6 @@
 
 @section("script")
     <script>
-        $(document).ready(function () {
-            $(".btn-add-variants").on("click", function () {
-                $(".variants").append(`<div class="form-group col-md-4">
-                    <label for="">Tên phiên bản</label>
-                    <input name="name_variant[]" type="text" class="form-control" placeholder="Tên phiên bản">
-                </div>
 
                 <div class="form-group col-md-4">
                     <label for="">Giá</label>

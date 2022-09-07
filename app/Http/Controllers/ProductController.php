@@ -118,18 +118,6 @@ class ProductController extends Controller
         return view("backend.products.index", compact('products'));
     }
 
-    public function getVariants($id)
-    {
-        $variants = Variant::where('id_product', '=', $id)->get();
-//        dd($variants);
-        return view("backend.products.variants", compact('variants', 'id'));
-    }
-
-    public function getAddVariants($id)
-    {
-
-        return view("backend.products.add-variants", compact('id'));
-    }
 
 
 }

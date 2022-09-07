@@ -63,11 +63,7 @@ Route::group(['prefix' => 'admins', 'middleware' => ['admin']], function () {
         route::get("/edit/{id}", "ProductController@getEdit")->name("products.get_edit");
         route::post("/edit/{id}", "ProductController@postEdit")->name("products.post_edit");
         route::get("/del/{id}", "ProductController@getdel")->name("products.get_delete");
-        Route::get('/{id}/variants', 'ProductController@getVariants')->name('products.get_variants');
-        Route::get('/{id}/variants/delete/{id_variants}', 'ProductController@deleteVariants')->name('products.delete_variants');
 
-        Route::get('/{id}/aad-variants', 'ProductController@getAddVariants')->name('products.get_add_variants');
-        Route::post('/{id}/aad-variants', 'ProductController@postAddVariants')->name('products.post_add_variants');
 
         route::get("/del/{id}/{id_image}", "ProductController@getdelImageDetail")->name("products.get_delete_image_detail");
     });

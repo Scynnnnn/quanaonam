@@ -36,22 +36,22 @@
 
             <div class="form-group">
                 <label for="">Số lượng </label>
-                <input required type="text" name="qty" id="name" class="form-control" placeholder="Số lượng..."
+                <input required type="number" name="qty" id="name" class="form-control" placeholder="Số lượng..."
                        value="{{old('qty')}}">
             </div>
             <div class="form-group">
                 <label for="">Gía sản phẩm </label>
-                <input type="text" name="price" id="name" class="form-control" placeholder="Gía sản phẩm..."
+                <input type="number" name="price" id="name" class="form-control" placeholder="Gía sản phẩm..."
                        value="{{old('price')}}">
             </div>
             <div class="form-group">
                 <label for="">Gía nhập </label>
-                <input type="text" name="imp_price" id="name" class="form-control" placeholder="Gía nhập..."
+                <input type="number" name="imp_price" id="name" class="form-control" placeholder="Gía nhập..."
                        value="{{old('price')}}">
             </div>
             <div class="form-group">
                 <label for="">Khuyến mãi % </label>
-                <input type="text" name="discount" id="price" class="form-control" placeholder="Khuyến mãi %"
+                <input type="number" name="discount" id="price" class="form-control" placeholder="Khuyến mãi %"
                        value="{{old('discount')}}">
             </div>
 
@@ -60,26 +60,6 @@
                 <textarea name="description" id="" cols="30" rows="10"
                           class="form-control">{{ old('description') }}</textarea>
             </div>
-{{--             <div class="form-group">--}}
-{{--                <label for="">Nhà cung cấp</label>--}}
-{{--                <input type="text" name="supplier" id="supplier" class="form-control" placeholder="Nhà cung cấp..."--}}
-{{--                       value="{{old('supplier')}}">--}}
-{{--            </div>--}}
-            <script>
-                // Replace the <textarea id="editor1"> with a CKEditor
-                // instance, using default configuration.
-                CKEDITOR.replace('description', options);
-            </script>
-{{--            <div class="form-group">--}}
-{{--                <label for="">Ngày bắt đầu khuyến mãi </label>--}}
-{{--                <input type="date" name="promotion_day_start" id="price" class="form-control" placeholder="Ngày bắt đầu khuyến mãi"--}}
-{{--                       value="{{old('promotion_day_start')}}">--}}
-{{--            </div>--}}
-{{--            <div class="form-group">--}}
-{{--                <label for="">Ngày kết thúc khuyến mãi </label>--}}
-{{--                <input type="date" name="promotion_day_end" id="price" class="form-control" placeholder="Ngày bắt đầu khuyến mãi"--}}
-{{--                       value="{{old('promotion_day_end')}}">--}}
-{{--            </div>--}}
 
             <div class="form-group">
                 <label for="">Hình đại diện </label>
@@ -135,13 +115,6 @@
 
 @section("script")
     <script>
-        $(document).ready(function () {
-            $(".btn-add-variants").on("click", function () {
-                $(".variants").append(`<div class="form-group col-md-4">
-                    <label for="">Tên phiên bản</label>
-                    <input name="name_variant[]" type="text" class="form-control" placeholder="Tên phiên bản">
-                </div>
-
                 <div class="form-group col-md-4">
                     <label for="">Giá</label>
                     <input name="price[]" type="text" class="form-control" placeholder="Giá">
