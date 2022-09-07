@@ -53,7 +53,7 @@
                             <a id_pro ="{{ $item->id }}" class="cart_quantity_delete btn_df btn_table_td_rf_del" href=""><i class="fa fa-times"></i></a>
                         </td>
                     </tr>
-                    
+                    @endforeach
                     <tr>
                         <td colspan="7" class="textright_text">
                             <div class="sum_price_all" style="font-size: 20px">
@@ -61,7 +61,7 @@
                                 <span class="text_price color_red">{{ number_format(Cart::getSubTotal(), 0, '.', ',') }} đ</span>
                             </div>
                         </td>
-
+                        
 
                     </tr>
                     </tbody>
@@ -80,11 +80,11 @@
 {{--                                <input type="text" placeholder="Họ tên" value="@if(auth()->guard('web')->user()){{ auth()->guard('web')->user()->name }} @endif">--}}
 {{--                                <input type="text" placeholder="Số điện thoại">--}}
 {{--                                <input type="text" placeholder="Địa chỉ nhận hàng">--}}
-                                        @if ($item->price == '0')
-                                        @else
 {{--                            <a class="btn btn-primary" href="">Tiếp tục</a>--}}
-                                        @endif
-                                        @endforeach
+
+
+
+                                        
 {{--                            </form>--}}
 {{--                        </div>--}}
 {{--                    </div>--}}
